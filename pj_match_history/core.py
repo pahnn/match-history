@@ -1,5 +1,6 @@
 from flask_sqlalchemy import SQLAlchemy
-from app import db
+
+db = SQLAlchemy()
 
 class Error(Exception):
     
@@ -65,13 +66,6 @@ class Service(object):
         """
         return self.find(**kwargs).first()
 
-    def get_or_404(self, id):
-        """Returns an instance of the service's model with the specified id or
-        raises an 404 error if an instance with the specified id does not exist.
-        :param id: the instance id
-        """
-        return self.__model__.query.get_or_404(id)
-
     def create(self, **kwargs):
         """Returns a new, saved instance of the service's model class.
         :param **kwargs: instance parameters
@@ -84,7 +78,7 @@ class Service(object):
         :param **kwargs: update parameters
         """
         self._isinstance(model)
-        for k, v in self._preprocess_params(kwargs).items():
+        for k, v in kwargs.items():
             setattr(model, k, v)
         self.save(model)
         return model

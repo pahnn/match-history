@@ -53,7 +53,7 @@ def get_matches_by_account_id(account_id, options=None):
     #     return({"error": "Problem reaching match api endpoint"})
     
 
-def get_match_by_id(match_id):
+def get_match(match_id):
     """Retrieves detailed match information for a given match id
     
     Args:

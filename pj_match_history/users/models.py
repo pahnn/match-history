@@ -1,4 +1,4 @@
-from app import db
+from ..core import db
 
 class User(db.Model):
     __tablename__ = 'users'
@@ -10,6 +10,7 @@ class User(db.Model):
     summoner_level = db.Column(db.Integer())
     summoner_id = db.Column(db.String())
     account_id = db.Column(db.String())
-    revision_date = db.Column(db.DateTime())
+    revision_date = db.Column(db.Integer())
+    last_fetched_date = db.Column(db.Integer())
             
 
